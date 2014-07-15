@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,6 +22,8 @@ angular.module('starter', ['ionic'])
         longitude: pos.coords.longitude
       })
 
+      alert(pos.coords.latitude.toString() + " " + po.coords.longitude.toString());
+
       return locations;
     },
 
@@ -34,7 +36,7 @@ angular.module('starter', ['ionic'])
     }
   };
 })
-.controller('MapCtrl', function($scope, $ionicLoading, $compile, $timeout, Movements) {
+.controller('MapCtrl', function($scope, $ionicLoading, $compile, $timeout, Movements, $cordovaGeolocation) {
   function initialize() {
     var myLatlng = new google.maps.LatLng(49.2756719, -123.11771039999999);
 
@@ -73,10 +75,8 @@ angular.module('starter', ['ionic'])
 
     $timeout(function() {
       if ($scope.tracking) {
-        navigator.geolocation.getCurrentPosition(function(pos) {
+        $cordovaGeolocation.getCurrentPosition().then(function(pos) {
           Movements.add(pos);
-          console.log(Movements.all());
-          console.log(Movements.totalDistance());
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
         }, function(error) {
           console.log(error.message);

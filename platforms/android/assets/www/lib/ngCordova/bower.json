@@ -1,0 +1,21 @@
+{
+    "name": "ngCordova",
+    "version": "0.1.2-alpha",
+    "homepage": "http://ngCordova.com/",
+    "authors": [
+        "Max Lynch <max@drifty.com>",
+        "Paolo Bernasconi <paolo.enrico.bernasconi@gmail.com>"
+    ],
+    "description": "AngularJS Cordova wrappers for common Cordova plugins.",
+    "main": "./dist/ng-cordova.js",
+    "keywords": [
+        "cordova",
+        "phonegap",
+        "angular",
+        "angularjs",
+        "ionic",
+        "cordova plugin"
+    ],
+    "license": "MIT",
+    "private": false
+}
