@@ -22,19 +22,14 @@ angular.module('starter', ['ionic', 'ngCordova'])
         longitude: pos.coords.longitude
       })
 
-      alert(pos.coords.latitude.toString() + " " + po.coords.longitude.toString());
-
-      return locations;
+      return locations.length;
     },
 
     totalDistance: function() {
-      alert(locations.length);
       return geolib.getPathLength(locations);
     },
 
-    all: function() {
-      return locations;
-    }
+    all: locations,
   };
 })
 .controller('MapCtrl', function($scope, $ionicLoading, $compile, $timeout, Movements, $cordovaGeolocation) {
@@ -60,15 +55,23 @@ angular.module('starter', ['ionic', 'ngCordova'])
     var marker = new google.maps.Marker({
       position: myLatlng,
       map: map,
-      title: 'Home'
+      title: 'Starting Point'
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-      infowindow.open(map,marker);
+    $scope.googLocations = [];
+    $scope.line = new google.maps.Polyline({
+      path: $scope.googLocations,
+      geodesic: true,
+      strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2,
+      map: map
     });
 
     $scope.map = map;
   }
+
+  $scope.distance = 0;
   google.maps.event.addDomListener(window, 'load', initialize);
 
   $scope.trackMe = function() {
@@ -79,6 +82,9 @@ angular.module('starter', ['ionic', 'ngCordova'])
       if ($scope.tracking) {
         $cordovaGeolocation.getCurrentPosition().then(function(pos) {
           Movements.add(pos);
+          $scope.distance = Movements.totalDistance();
+          $scope.googLocations.push(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+          $scope.line.setPath($scope.googLocations);
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
         }, function(error) {
           console.log(error.message);
