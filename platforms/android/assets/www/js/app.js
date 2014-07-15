@@ -28,6 +28,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
     },
 
     totalDistance: function() {
+      alert(locations.length);
       return geolib.getPathLength(locations);
     },
 
@@ -72,13 +73,11 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
   $scope.trackMe = function() {
     $scope.tracking = true;
-    alert('tracking');
+    window.plugin.backgroundMode.enable();
 
     $timeout(function() {
       if ($scope.tracking) {
-        alert('got in here');
         $cordovaGeolocation.getCurrentPosition().then(function(pos) {
-          alert(pos.coords.latitude);
           Movements.add(pos);
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
         }, function(error) {
@@ -92,6 +91,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
   $scope.stopTracking = function() {
     $scope.tracking = false;
+    window.plugin.backgroundMode.disable();
     alert(Movements.totalDistance());
   }
 

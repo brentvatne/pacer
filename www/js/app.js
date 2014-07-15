@@ -28,6 +28,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
     },
 
     totalDistance: function() {
+      alert(locations.length);
       return geolib.getPathLength(locations);
     },
 
@@ -72,6 +73,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
   $scope.trackMe = function() {
     $scope.tracking = true;
+    window.plugin.backgroundMode.enable();
 
     $timeout(function() {
       if ($scope.tracking) {
@@ -89,6 +91,7 @@ angular.module('starter', ['ionic', 'ngCordova'])
 
   $scope.stopTracking = function() {
     $scope.tracking = false;
+    window.plugin.backgroundMode.disable();
     alert(Movements.totalDistance());
   }
 

@@ -12,6 +12,7 @@
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
+    <preference name="KeepRunning" value="true" />
     <name>HelloCordova</name>
     <description>
         An Ionic Framework and Cordova project.

@@ -324,9 +324,12 @@
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/lib/ngCordova/test/plugins/toast.spec.js \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/lib/ngCordova/test/plugins/vibration.spec.js \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/com.ionic.keyboard \
+/Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/de.appplant.cordova.plugin.background-mode \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/org.apache.cordova.device \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/com.ionic.keyboard/www \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/com.ionic.keyboard/www/keyboard.js \
+/Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/de.appplant.cordova.plugin.background-mode/www \
+/Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/de.appplant.cordova.plugin.background-mode/www/background-mode.js \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/org.apache.cordova.device/www \
 /Users/brentvatne/coding/pacer/platforms/android/assets/www/plugins/org.apache.cordova.device/www/device.js \
 /Users/brentvatne/coding/pacer/platforms/android/ant-build/AndroidManifest.xml \
